@@ -40,40 +40,27 @@ Git
 ## Stages of development
 
 Golang Pen & Paper
-* TODO
 
 Golang Startup
-* TODO
 
 Golang Testing Part 1
-* TODO
 
 Golang Serving & Endpoints
-* TODO
 
 Frontend Startup
-* TODO
 
 Frontend Pen & Paper
-* TODO
 
 Frontend Iteration: Blocking Out Part 1
-* TODO
 
 Frontend Iteration: Fetching Data Read
-* TODO
 
 Frontend Iteration: Input Validation
-* TODO
 
 Frontend Iteration: Fetching Data Write & Redraw
-* TODO
 
 Backend Iteration: JSON String Responses
-* TODO
 
 Deploying To Heroku
-* TODO
 
 Pushing to Git & Connecting To Heroku
-* TODO

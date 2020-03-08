@@ -16,6 +16,8 @@ Design a golang RESTful backend service that
   * As self documenting as possible
   * Clear error logging
 * Uses testing and test reporting
+ * Test files alongside each internal package
+ * Base dir script to run all internal package tests with ease
 
 Deploys on heroku
 * Conserve efforts to spend on the project work and not on hosting
@@ -26,6 +28,14 @@ Design a front end that
 * Uses as few React features as necessary
 * Uses as many out-of-the-box frontend features to provide input validation as possible
   * Disabling buttons, input types
+  
+Git
+* Use a simple branching scheme
+ * Work on dev
+ * Deploy from deploy on Heroku
+ * Merge stable milestones to master
+ * Tag deploy branch for easy finding of deploy commit points
+ * Tag master for easy finding of stable commit points
 
 ## Stages of development
 

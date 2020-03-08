@@ -29,12 +29,7 @@ func (d *Database) DeleteReview(key uint) bool {
 	}
 	return d.provider.DeleteReview(key)
 }
-func (d *Database) SetReviewBalance(key uint, balance float32) bool {
-	if d.provider == nil {
-		panic("No provider set in database!")
-	}
-	return d.provider.SetReviewBalance(key, balance)
-}
+
 func (d *Database) GetReviews() []models.Review {
 	if d.provider == nil {
 		panic("No provider set in database!")

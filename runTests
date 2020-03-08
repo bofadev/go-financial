@@ -1,0 +1,17 @@
+#!/bin/bash
+
+echo running tests...
+
+echo ...testing [internals/models/test]
+go test ./internals/models/test
+
+echo ...testing [internals/database/test]
+go test ./internals/database/test
+
+echo ...testing [internals/database/testProviderFake]
+go test ./internals/database/testProviderFake
+
+echo ...testing [internals/endpoints/test]
+go test ./internals/endpoints/test
+
+echo ...tests complete

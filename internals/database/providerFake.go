@@ -60,19 +60,6 @@ func (p *ProviderFake) DeleteReview(key uint) bool {
 
 	return false
 }
-func (p *ProviderFake) SetReviewBalance(key uint, balance float32) bool {
-
-	for i, v := range p.reviews {
-		if v.Key == key {
-			p.reviews[i].Balance = balance
-			fmt.Printf("SetReviewBalance - Success: %s\n", p.reviews[i].GetString())
-			return true
-		}
-	}
-
-	fmt.Printf("SetReviewBalance - could not find review w/ key %d", key)
-	return false
-}
 func (p *ProviderFake) GetReviews() []models.Review {
 	return p.reviews
 }

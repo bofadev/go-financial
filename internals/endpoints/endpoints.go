@@ -49,14 +49,6 @@ func (e *Endpoints) RemoveReview(key uint) bool {
 	return true
 }
 
-//	SET.
-func (e *Endpoints) SetReviewBalance(key uint, balance float32) {
-
-	if ok := e.db.SetReviewBalance(key, balance); ok == false {
-		panic("Endpoint - cound not set review balance")
-	}
-}
-
 //	GET.
 func (e *Endpoints) GetReviews() string {
 

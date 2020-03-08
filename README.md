@@ -51,7 +51,7 @@ Frontend Startup
 
 Frontend Pen & Paper
 
-Frontend Iteration: Blocking Out Part
+Frontend Iteration: Blocking Out
 
 Frontend Iteration: Fetching Data Read
 

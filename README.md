@@ -1,6 +1,4 @@
-
 # go-financial
-
 A golang backend project with react front end. Meant to demonstrate my understanding and ability to create fullstack web applications. Setup to deploy on heroku.
 
 ## Intents
@@ -31,4 +29,41 @@ Design a front end that
 
 ## Stages of development
 
-TODO
+Golang Pen & Paper
+* TODO
+
+Golang Startup
+* TODO
+
+Golang Testing Part 1
+* TODO
+
+Golang Serving & Endpoints
+* TODO
+
+Frontend Startup
+* TODO
+
+Frontend Pen & Paper
+* TODO
+
+Frontend Iteration: Blocking Out Part 1
+* TODO
+
+Frontend Iteration: Fetching Data Read
+* TODO
+
+Frontend Iteration: Input Validation
+* TODO
+
+Frontend Iteration: Fetching Data Write & Redraw
+* TODO
+
+Backend Iteration: JSON String Responses
+* TODO
+
+Deploying To Heroku
+* TODO
+
+Pushing to Git & Connecting To Heroku
+* TODO

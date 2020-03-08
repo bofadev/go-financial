@@ -51,7 +51,7 @@ Frontend Startup
 
 Frontend Pen & Paper
 
-Frontend Iteration: Blocking Out Part 1
+Frontend Iteration: Blocking Out Part
 
 Frontend Iteration: Fetching Data Read
 
@@ -60,6 +60,8 @@ Frontend Iteration: Input Validation
 Frontend Iteration: Fetching Data Write & Redraw
 
 Backend Iteration: JSON String Responses
+
+Golang Testing Part 2
 
 Deploying To Heroku
 

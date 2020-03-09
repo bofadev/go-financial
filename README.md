@@ -1,6 +1,8 @@
 # go-financial
 A golang backend project with react front end. Meant to demonstrate my understanding and ability to create fullstack web applications. Setup to deploy on heroku.
 
+Currently hosted at: https://radiant-forest-56799.herokuapp.com/
+
 ## Intents
 Design a golang RESTful backend service that
 * Serves web requests

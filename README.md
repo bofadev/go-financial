@@ -85,3 +85,4 @@ Getting remote PostgreSQL provider working
 * Heroku continuous integration connetion to golang tests
 * Standardized backend logging rather than stdout printing
 * Adhere main/internals to some less arbitrary coding standard
+* Benchmark backend memory usage and latency

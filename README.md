@@ -81,9 +81,9 @@ Getting remote PostgreSQL provider working
 * Testing front end with Jasmine
 * Research load testing
 * Feature: User login
- * Email + Facebook + Google authentication (Using Auth0?)
- * Customized database tables per 'person'
- * Allow a 'user' to browse stored users
+  * Email + Facebook + Google authentication (Using Auth0?)
+  * Customized database tables per 'person'
+  * Allow a 'user' to browse stored users
 * Mobile friendly front end
 * Heroku continuous integration connetion to golang tests
 * Standardized backend logging rather than stdout printing

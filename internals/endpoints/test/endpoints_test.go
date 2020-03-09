@@ -56,7 +56,7 @@ func TestRemoveReview(t *testing.T) {
 		t.Error("Test poorly designed. Entry was already in database.")
 	}
 
-	ok, key := e.AddReview(models.ReviewTypeAsset, rName, 3456.0)
+	ok := e.AddReview(models.ReviewTypeAsset, rName, 3456.0)
 	if ok == false {
 		t.Error("AddReview() returned an error")
 	}
@@ -66,6 +66,10 @@ func TestRemoveReview(t *testing.T) {
 	}
 	//fmt.Printf("Found added review [string index:%d] [review:%s]\n", foundIndexAfter, e.GetReviews())
 
+	ok, key := e.GetLastReviewId()
+	if ok == false {
+		t.Error("Could not get last review id")
+	}
 	ok = e.RemoveReview(key)
 	if ok == false {
 		t.Error("RemoveReview() returned an error")

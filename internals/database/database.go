@@ -17,7 +17,7 @@ func (d *Database) GetHelloString() string {
 	return d.provider.GetHelloString()
 }
 
-func (d *Database) AddReview(r *models.Review) (bool, uint) {
+func (d *Database) AddReview(r *models.Review) bool {
 	if d.provider == nil {
 		panic("No provider set in database!")
 	}
@@ -35,4 +35,14 @@ func (d *Database) GetReviews() []models.Review {
 		panic("No provider set in database!")
 	}
 	return d.provider.GetReviews()
+}
+func (d *Database) GetSumAssets() (bool, float32) {
+	return d.provider.GetSumAssets()
+}
+func (d *Database) GetSumLiabilities() (bool, float32) {
+	return d.provider.GetSumLiabilities()
+}
+
+func (d *Database) GetLastReviewId() (bool, uint) {
+	return d.provider.GetLastReviewId()
 }

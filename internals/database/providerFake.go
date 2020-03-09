@@ -28,11 +28,17 @@ func isReviewValid(r *models.Review) bool {
 	return true
 }
 
-func (p *ProviderFake) AddReview(r *models.Review) (bool, uint) {
+func (p *ProviderFake) GetLastReviewId() (bool, uint) {
+
+	lastReview := p.reviews[(len(p.reviews) - 1)]
+	return true, lastReview.Key
+}
+
+func (p *ProviderFake) AddReview(r *models.Review) bool {
 
 	if isReviewValid(r) == false {
 		fmt.Printf("Failed to add review. Bad type/kind: %s\n", r.GetString())
-		return false, 0
+		return false
 	}
 
 	r.Key = p.counter
@@ -40,7 +46,7 @@ func (p *ProviderFake) AddReview(r *models.Review) (bool, uint) {
 
 	p.reviews = append(p.reviews, *r)
 
-	return true, r.Key
+	return true
 }
 func (p *ProviderFake) DeleteReview(key uint) bool {
 
@@ -64,7 +70,32 @@ func (p *ProviderFake) GetReviews() []models.Review {
 	return p.reviews
 }
 
-func (p *ProviderFake) Populate() {
+func (p *ProviderFake) GetSumAssets() (bool, float32) {
+
+	var sum float32
+	reviews := p.GetReviews()
+	for _, v := range reviews {
+		if v.Type == models.ReviewTypeAsset {
+			sum += v.Balance
+		}
+	}
+
+	return true, sum
+}
+func (p *ProviderFake) GetSumLiabilities() (bool, float32) {
+
+	var sum float32
+	reviews := p.GetReviews()
+	for _, v := range reviews {
+		if v.Type == models.ReviewTypeLiability {
+			sum += v.Balance
+		}
+	}
+
+	return true, sum
+}
+
+func (p *ProviderFake) Init() bool {
 
 	p.reviews = make([]models.Review, 0)
 	p.counter = 1
@@ -81,4 +112,6 @@ func (p *ProviderFake) Populate() {
 	for ; i < 10; i++ {
 		p.AddReview(&models.Review{Type: models.ReviewTypeLiability, Name: fmt.Sprintf("name%d", i), Balance: 100.0})
 	}
+
+	return true
 }

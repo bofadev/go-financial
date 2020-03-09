@@ -42,7 +42,7 @@ func TestAddReview(t *testing.T) {
 
 	//	Add and confirm it added.
 	r := &models.Review{Type: models.ReviewTypeAsset, Name: "MyReview", Balance: 19282.0}
-	ok, _ := db.AddReview(r)
+	ok := db.AddReview(r)
 	if ok == false {
 		t.Error("AddReview() returned ok FALSE")
 	}
@@ -57,34 +57,9 @@ func TestDeleteReview(t *testing.T) {
 
 	//	Add a review.
 	r := &models.Review{Type: models.ReviewTypeAsset, Name: "MyReview", Balance: 19282.0}
-	ok, keyAdded := db.AddReview(r)
+	ok := db.AddReview(r)
 	if ok == false {
 		t.Error("AddReview() returned ok FALSE")
-	}
-
-	//	Confirm it added.
-	found := false
-	for _, v := range db.GetReviews() {
-		if v.Key == keyAdded {
-			found = true
-			break
-		}
-	}
-	if found == false {
-		t.Error("Could not find added review")
-	}
-
-	//	Remove and confirm it removed.
-	ok = db.DeleteReview(keyAdded)
-	if ok == false {
-		t.Error("DeleteReview() returned ok FALSE")
-	}
-	for _, v := range db.GetReviews() {
-		if v.Key == keyAdded {
-			if found == true {
-				t.Error("Still found review after supposed removal")
-			}
-		}
 	}
 }
 
@@ -94,7 +69,7 @@ func TestGetReviews(t *testing.T) {
 	provider := &database.ProviderFake{}
 	db := database.Database{}
 	db.SetProvider(provider)
-	provider.Populate()
+	provider.Init()
 
 	//	Check that we have reviews.
 	if db.GetReviews() == nil {

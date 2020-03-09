@@ -47,9 +47,10 @@ func main() {
 
 	//	Connect endpoints -----------------------------
 	e := endpoints.Endpoints{}
-	e.SetupFake()
-	responseCodeOK := 200
-	responseCodeFailure := 500
+	//e.SetupFake()
+	e.Setup()
+	const responseCodeOK int = 200
+	const responseCodeFailure int = 500
 
 	r.GET("/reviews/get", func(c *gin.Context) {
 		c.String(responseCodeOK, e.GetReviews())
@@ -72,7 +73,7 @@ func main() {
 			return
 		}
 
-		ok, key := e.AddReview(kind, name, float32(balance))
+		ok := e.AddReview(kind, name, float32(balance))
 
 		if ok == false {
 			rString := getResponseJsonString(false, "", "", "", "", "Failed to add review")
@@ -80,7 +81,7 @@ func main() {
 			return
 		}
 
-		rString := getResponseJsonString(true, string(key), "", "", "", "Added review")
+		rString := getResponseJsonString(true, "", "", "", "", "Added review")
 		c.String(responseCodeOK, rString)
 	})
 	r.GET("/review/delete", func(c *gin.Context) {

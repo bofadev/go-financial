@@ -20,23 +20,38 @@ func (e *Endpoints) SayHello() {
 
 //	SETUP.
 func (e *Endpoints) SetupFake() {
+
+	fmt.Println("Setup with db FAKE")
+
 	fake := &database.ProviderFake{}
 	e.db.SetProvider(fake)
 
-	fake.Populate()
+	fake.Init()
+}
+func (e *Endpoints) Setup() {
+
+	fmt.Println("Setup with db REAL")
+
+	psql := &database.ProviderPSQL{}
+	e.db.SetProvider(psql)
+
+	if ok := psql.Init(); ok == false {
+		panic("Database failed to init")
+	}
+
 }
 
 //	ADD/REMOVE.
-func (e *Endpoints) AddReview(kind models.ReviewType, name string, balance float32) (bool, uint) {
-	ok, val := e.db.AddReview(&models.Review{Type: kind, Name: name, Balance: balance})
+func (e *Endpoints) AddReview(kind models.ReviewType, name string, balance float32) bool {
+	ok := e.db.AddReview(&models.Review{Type: kind, Name: name, Balance: balance})
 
 	if ok == false {
 
 		fmt.Println("Endpoint - could not add review")
-		return false, 0
+		return false
 	}
 
-	return true, val
+	return true
 }
 func (e *Endpoints) RemoveReview(key uint) bool {
 
@@ -63,35 +78,40 @@ func (e *Endpoints) GetReviews() string {
 //	Returns the summed total of Assets and Liabilities in the database.
 func (e *Endpoints) GetNetWorth() string {
 
-	var val float32 = 0
-	for _, v := range e.db.GetReviews() {
-		if v.IsAsset() {
-			val += v.Balance
-		} else if v.IsLiability() {
-			val -= v.Balance
-		}
+	ok, sumAssets := e.db.GetSumAssets()
+	if ok == false {
+		fmt.Println("Error getting asset sum from db")
 	}
-	return fmt.Sprintf("%.2f", val)
+	ok, sumLiabilities := e.db.GetSumLiabilities()
+	if ok == false {
+		fmt.Println("Error getting liability sum from db")
+	}
+
+	return fmt.Sprintf("%.2f", sumAssets-sumLiabilities)
 }
 
 //	Returns the summed total of the assets in the database.
 func (e *Endpoints) GetAssetsTotal() string {
-	var val float32 = 0
-	for _, v := range e.db.GetReviews() {
-		if v.IsAsset() {
-			val += v.Balance
-		}
+
+	ok, sum := e.db.GetSumAssets()
+	if ok == false {
+		fmt.Println("Error getting asset sum from db")
 	}
-	return fmt.Sprintf("%.2f", val)
+
+	return fmt.Sprintf("%.2f", sum)
 }
 
 //	Returns the summed total of liabilities in the database.
 func (e *Endpoints) GetLiabilitiesTotal() string {
-	var val float32 = 0
-	for _, v := range e.db.GetReviews() {
-		if v.IsLiability() {
-			val += v.Balance
-		}
+
+	ok, sum := e.db.GetSumLiabilities()
+	if ok == false {
+		fmt.Println("Error getting liability sum from db")
 	}
-	return fmt.Sprintf("%.2f", val)
+
+	return fmt.Sprintf("%.2f", sum)
+}
+
+func (e *Endpoints) GetLastReviewId() (bool, uint) {
+	return e.db.GetLastReviewId()
 }

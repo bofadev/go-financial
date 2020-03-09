@@ -25,7 +25,7 @@ func TestAddReview(t *testing.T) {
 
 	//	Add and confirm it added.
 	r := &models.Review{Type: models.ReviewTypeAsset, Name: "MyReview", Balance: 19282.0}
-	ok, _ := p.AddReview(r)
+	ok := p.AddReview(r)
 	if ok == false {
 		t.Error("AddReview() returned ok FALSE")
 	}
@@ -38,9 +38,13 @@ func TestDeleteReview(t *testing.T) {
 
 	//	Add a review.
 	r := &models.Review{Type: models.ReviewTypeAsset, Name: "MyReview", Balance: 19282.0}
-	ok, keyAdded := p.AddReview(r)
+	ok := p.AddReview(r)
 	if ok == false {
 		t.Error("AddReview() returned ok FALSE")
+	}
+	ok, keyAdded := p.GetLastReviewId()
+	if ok == false {
+		t.Error("Could not get last review id")
 	}
 
 	//	Confirm it added.
@@ -76,7 +80,7 @@ func TestGetReviews(t *testing.T) {
 
 	//	Add and confirm it added.
 	r := &models.Review{Type: models.ReviewTypeAsset, Name: "MyReview", Balance: 19282.0}
-	ok, _ := p.AddReview(r)
+	ok := p.AddReview(r)
 	if ok == false {
 		t.Error("AddReview() returned ok FALSE")
 	}
@@ -87,11 +91,11 @@ func TestGetReviews(t *testing.T) {
 	}
 }
 
-func TestPopulate(t *testing.T) {
+func TestInit(t *testing.T) {
 
 	//	Setup.
 	p := database.ProviderFake{}
-	p.Populate()
+	p.Init()
 
 	//	Check that we have reviews.
 	if p.GetReviews() == nil {

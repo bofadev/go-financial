@@ -61,8 +61,26 @@ Frontend Iteration: Fetching Data Write & Redraw
 
 Backend Iteration: JSON String Responses
 
+Frontend UX bug searching
+
 Golang Testing Part 2
 
 Deploying To Heroku
 
 Pushing to Git & Connecting To Heroku
+
+Getting local PostgreSQL provider working
+
+Setting up remote heroku PostgreSQL provider
+
+Getting remote PostgreSQL provider working
+
+## Wishlist
+* Testing front end with Jasmine
+* Research load testing
+* Feature: User login
+ * Email + Facebook + Google authentication (Using Auth0?)
+ * Customized database tables per user
+* Mobile friendly front end
+* Heroku continuous integration connetion to golang tests
+* Standardized backend logging rather than stdout printing

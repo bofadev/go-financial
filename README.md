@@ -84,3 +84,4 @@ Getting remote PostgreSQL provider working
 * Mobile friendly front end
 * Heroku continuous integration connetion to golang tests
 * Standardized backend logging rather than stdout printing
+* Adhere main/internals to some less arbitrary coding standard
